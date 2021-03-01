@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bevásárlólista</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'style.css'%} ">
+</head>
+
+<body>
+    <div class="app">
+        <div class="header">
+            <h1>Bevásárlólista</h1>
+            <div class="info">
+                <span class="lista_nev">Teszt bevásárlólista</span>
+                <div class="gomb piros grid" id="delete">Törlés</div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="elem">
+                <div class="bal">
+                    <p class="id">#1</p>
+                    <h3>Tej</h3>
+                </div>
+                <div class="jobb">
+                    <div class="gomb piros elem_btn" id="torles">X</div>
+                    <div class="gomb zold elem_btn" id="frissit">Frissítés</div>
+                    <input type="number" name="db" onkeydown="return event.keyCode !== 69" class="input" value="3" />
+                </div>
+            </div>
+            <div class="elem">
+                <div class="bal">
+                    <p class="id">#2</p>
+                    <h3>Sajt</h3>
+                </div>
+                <div class="jobb">
+                    <div class="gomb piros elem_btn" id="torles">X</div>
+                    <div class="gomb zold elem_btn" id="frissit">Frissítés</div>
+                    <input type="number" name="db" onkeydown="return event.keyCode !== 69" class="input" value="7" />
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="{% static 'javascript.js'%} "></script>
+
+</html>

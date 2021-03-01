@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+
+</head>
+<body>
+
+    <h1>Hello vilag!</h1>
+    
+    <p>
+        Az a változó értéke 
+        {% if a > 100 %}
+            <span style="color:red">{{ a }}</span>
+        {% else %}
+            <span style="color:rgb(17, 0, 255)">{{ a }}</span>
+        {% endif %}
+    </p>
+
+    <p>
+        A b változó értéke {{ b }}
+    </p>
+
+    <p>
+        A l változó értéke {{ l }}
+    </p>
+
+    <ul>
+        {% for i in l %}
+       <li>
+                ez itt a szám: {{ i }}
+          </li>
+        {% endfor %}
+    </ul>
+
+
+
+    <h1>Tanulók:</h1>
+    <ul>
+       {% for t in tanulok %} 
+        <li>{{ t.nev }}</li>
+       {% endfor %}
+    </ul>
+</body>
+</html>

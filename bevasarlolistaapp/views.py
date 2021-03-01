@@ -8,4 +8,7 @@ def home_view(request, *args, **kwargs):
     }
     return render(request, "home.html", kontextus) 
 
+def bevasarlolista_view(request, *args, **kwargs):
+	return render(request, "bevasarlolista.html") 
+
 # Create your views here.

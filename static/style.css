@@ -1,0 +1,149 @@
+*,
+*:before,
+*:after {
+    box-sizing: inherit
+}
+
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%
+}
+
+body {
+    color: #333;
+    margin: 0;
+}
+
+.app {
+    display: grid;
+    grid-template-columns: 10% auto 10%;
+    grid-template-rows: auto;
+
+    gap: 5px;
+}
+
+h1 {
+    font-weight: bold;
+    text-align: center;
+    font-size: 2em;
+    padding: 1em 0;
+    border-bottom: 1px solid #dadada;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.header {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+    padding-bottom: 1.2em;
+    border-bottom: 1px solid #D0D0D0;
+}
+
+.info {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 1;
+}
+
+.lista_nev {
+    font-size: 2em;
+    justify-self: start;
+}
+
+.gomb {
+    text-decoration: none;
+    letter-spacing: -.015em;
+    font-size: .75em;
+    padding: 1em;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 50px;
+    float: right;
+    text-align: right;
+}
+
+.grid {
+    justify-self: end;
+}
+
+.elem_btn {
+    margin: auto 0.5em;
+}
+
+.zold {
+    background: #82ca9c;
+}
+
+.piros {
+    background: #f05555;
+}
+
+.content {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.elem {
+    display: grid;
+
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 1;
+    padding: 1em;
+}
+
+.elem:nth-child(even) {
+    background: #fafafa;
+}
+
+.bal {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+p.id {
+    color: #777;
+    margin: 0;
+    margin-top: .5em;
+    font-size: 1.1em;
+}
+
+h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: .025em;
+}
+
+.jobb {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+    margin: 1em;
+}
+
+.input {
+    width: 1.5em;
+    height: 1.5em;
+    text-align: center;
+    font-size: 1em;
+    padding: .25em;
+    margin: auto 0.5em;
+
+    float: right;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
