@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,400italic|Montserrat:400,700);
+
 *,
 *:before,
 *:after {
@@ -12,6 +14,8 @@ html {
 body {
     color: #333;
     margin: 0;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Droid Serif', serif;
 }
 
 .app {
@@ -30,6 +34,7 @@ h1 {
     border-bottom: 1px solid #dadada;
     letter-spacing: 3px;
     text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .header {
@@ -51,11 +56,13 @@ h1 {
 .lista_nev {
     font-size: 2em;
     justify-self: start;
+    font-family: 'Droid Serif', serif;
 }
 
 .gomb {
     text-decoration: none;
     letter-spacing: -.015em;
+    font-family: 'Montserrat', sans-serif;
     font-size: .75em;
     padding: 1em;
     color: #fff;
@@ -86,6 +93,8 @@ h1 {
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 3;
+
+    font-family: 'Montserrat', sans-serif;
 }
 
 .elem {
@@ -131,6 +140,15 @@ h3 {
     margin: 1em;
 }
 
+p.db {
+    font-size: .85em;
+    float: right;
+    margin: .7em 2em .7em 0;
+
+
+    color: #777777;
+}
+
 .input {
     width: 1.5em;
     height: 1.5em;
@@ -146,4 +164,15 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.hozzaad {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 4;
+    grid-row-end: 5;
+
+    margin: 1em;
+
+    justify-self: center;
 }
