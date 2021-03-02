@@ -16,11 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 
-from bevasarlolistaapp.views import home_view, index_view, bevasarlolista_view, add
+from bevasarlolistaapp.views import home_view, index_view, bevasarlolista_view, add, frissit, torles, delete, create
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^bevasarlolista/(?P<uuid>\w{0,50})/$', bevasarlolista_view),
+    path('create/', create),
     path('add/', add),
+    path('frissit/', frissit),
+    path('torles/', torles),
+    path('delete/', delete),
     path('', index_view)
 ]

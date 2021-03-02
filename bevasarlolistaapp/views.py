@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 import json
+
+from .models import Bevasarlolista
 
 
 def home_view(request, *args, **kwargs):
@@ -13,17 +15,64 @@ def home_view(request, *args, **kwargs):
 
 
 def bevasarlolista_view(request, uuid, *args, **kwargs):
-    array = {
-        "uuid": uuid
+
+    if(Bevasarlolista.protection(uuid)):
+        array = {
+            "uuid": uuid,
+            "nev": Bevasarlolista.get_name(uuid)
+        }
+
+        return render(request, "bevasarlolista.html", array)
+    else:
+        return redirect("/")
+
+
+def create(request, *args, **kwargs):
+
+    uuid = Bevasarlolista.create()
+    data = {
+        'response': uuid,
     }
 
-    if request.method == "POST":
-        print(request)
-
-    return render(request, "bevasarlolista.html", array)
+    return JsonResponse(data)
 
 
 def add(request, *args, **kwargs):
+    array = json.load(request)
+
+    if(Bevasarlolista.add_tetel(array)):
+        data = {
+            'response': 'Ok',
+        }
+
+        return JsonResponse(data)
+
+
+def frissit(request, *args, **kwargs):
+    array = json.load(request)
+
+    print(f'{array}')
+
+    data = {
+        'response': 'Ok',
+    }
+
+    return JsonResponse(data)
+
+
+def torles(request, *args, **kwargs):
+    array = json.load(request)
+
+    print(f'{array}')
+
+    data = {
+        'response': 'Ok',
+    }
+
+    return JsonResponse(data)
+
+
+def delete(request, *args, **kwargs):
     array = json.load(request)
 
     print(f'{array}')

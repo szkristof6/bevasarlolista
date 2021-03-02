@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Főoldal</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'style.css'%} ">
+</head>
+<body>
+    <div class="app">
+        <div class="header">
+            <h1>Bevásárlólista</h1>
+            <div class="info">
+                {% csrf_token %}
+                <span class="lista_nev">Főoldal</span>
+                <div class="gomb zold grid" id="create">Létrehozás</div>
+            </div>
+        </div>
+    </div>
+    <div id="massage" class="modal">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p />
+            </div>
+        </div>
+    </div>
+</body>
+<script src="{% static 'index.js'%} "></script>
+</html>
