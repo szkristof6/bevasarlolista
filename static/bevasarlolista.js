@@ -47,7 +47,7 @@ elemek.forEach((elem) => {
     torles_btn.addEventListener("click", (event) => {
         const json = {
             id: window.location.pathname.split('/')[2],
-            tetel_id: parseInt(elem.querySelector('.id').innerHTML.split('#')[1])
+            tetel_id: parseInt(elem.querySelector('.id').innerHTML.split('#')[1]-1)
         }
 
         fetch("/torles/", {
@@ -73,7 +73,7 @@ elemek.forEach((elem) => {
     frissit_btn.addEventListener("click", (event) => {
         const json = {
             id: window.location.pathname.split('/')[2],
-            tetel_id: parseInt(elem.querySelector('.id').innerHTML.split('#')[1]),
+            tetel_id: parseInt(elem.querySelector('.id').innerHTML.split('#')[1]-1),
             db: parseInt(elem.querySelector('input[name="db"]').value)
         }
 

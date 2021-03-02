@@ -19,7 +19,8 @@ def bevasarlolista_view(request, uuid, *args, **kwargs):
     if(Bevasarlolista.protection(uuid)):
         array = {
             "uuid": uuid,
-            "nev": Bevasarlolista.get_name(uuid)
+            "nev": Bevasarlolista.get_lista(uuid).nev,
+            "tetelek": Bevasarlolista.get_lista(uuid).tetel
         }
 
         return render(request, "bevasarlolista.html", array)
@@ -51,37 +52,34 @@ def add(request, *args, **kwargs):
 def frissit(request, *args, **kwargs):
     array = json.load(request)
 
-    print(f'{array}')
+    if(Bevasarlolista.frissit_tetel(array)):
+        data = {
+            'response': 'Ok',
+        }
 
-    data = {
-        'response': 'Ok',
-    }
-
-    return JsonResponse(data)
+        return JsonResponse(data)
 
 
 def torles(request, *args, **kwargs):
     array = json.load(request)
 
-    print(f'{array}')
+    if(Bevasarlolista.torol_tetel(array)):
+        data = {
+            'response': 'Ok',
+        }
 
-    data = {
-        'response': 'Ok',
-    }
-
-    return JsonResponse(data)
+        return JsonResponse(data)
 
 
 def delete(request, *args, **kwargs):
     array = json.load(request)
 
-    print(f'{array}')
+    if(Bevasarlolista.torol_bevasarlolista(array)):
+        data = {
+            'response': 'Ok',
+        }
 
-    data = {
-        'response': 'Ok',
-    }
-
-    return JsonResponse(data)
+        return JsonResponse(data)
 
 
 def index_view(request, *args, **kwargs):

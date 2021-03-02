@@ -23,10 +23,11 @@
             </div>
         </div>
         <div class="content">
+            {% for tetel in tetelek %}
             <div class="elem targy">
                 <div class="bal">
-                    <p class="id">#1</p>
-                    <h3>Tej</h3>
+                    <p class="id">#{{tetel.id}}</p>
+                    <h3>{{tetel.nev}}</h3>
                 </div>
                 <div class="jobb margin1">
                     <div class="gomb piros elem_btn" id="torles">X</div>
@@ -34,25 +35,12 @@
                     <p class="db"> db</p>
                     {% csrf_token %}
                     <input type="number" name="db" onkeydown="return event.keyCode !== 69" class="input number right"
-                        value="3" />
+                        value="{{tetel.db}}" />
                 </div>
             </div>
-            <div class="elem targy">
-                <div class="bal">
-                    <p class="id">#2</p>
-                    <h3>Sajt</h3>
-                </div>
-                <div class="jobb margin1">
-                    <div class="gomb piros elem_btn" id="torles">X</div>
-                    <div class="gomb zold elem_btn" id="frissit">Frissítés</div>
-                    <p class="db"> db</p>
-                    {% csrf_token %}
-                    <input type="number" name="db" onkeydown="return event.keyCode !== 69" class="input number right"
-                        value="4" />
-                </div>
-            </div>
+            {% endfor %}
             <form method="POST">
-                {% csrf_token %} 
+                {% csrf_token %}
                 <div class="elem">
                     <div class="bal margin1">
                         <input type="text" name="nev" class="input text left" placeholder="Elnevezés" />

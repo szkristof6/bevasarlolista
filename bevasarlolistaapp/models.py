@@ -33,27 +33,61 @@ class Bevasarlolista(models.Model):
         if response.count() > 0:
             return True
 
+    def torol_bevasarlolista(json):
+        query = Bevasarlolista.objects.filter(id=json['id'])
+        if not list(query)[0]:
+            return False
+        else:
+            query.delete()
+            return True
+
+    def frissit_tetel(json):
+        query = Bevasarlolista.objects.filter(id=json['id'])
+        if not list(query)[0].tetel:
+            return False
+        else:
+            new_list = list(query)[0].tetel
+            new_list[json['tetel_id']]['db'] = json['db']
+            query.update(tetel=new_list)
+
+            return True
+
+    def torol_tetel(json):
+        query = Bevasarlolista.objects.filter(id=json['id'])
+        if not list(query)[0].tetel:
+            return False
+        else:
+            new_list = list(query)[0].tetel
+            del new_list[json['tetel_id']]
+            query.update(tetel=new_list)
+
+            return True
+
     def add_tetel(json):
         query = Bevasarlolista.objects.filter(id=json['id'])
         if not list(query)[0].tetel:
             lista = [{
+                'id': 1,
                 'nev': json['nev'],
                 'db': json['db']
             }]
             query.update(tetel=lista)
+
+            return True
         else:
             eddigi = list(query)[0].tetel
             eddigi.append({
+                'id': eddigi[len(eddigi)-1]['id']+1,
                 'nev': json['nev'],
                 'db': json['db']
             })
             query.update(tetel=eddigi)
 
-        return True
+            return True
 
-    def get_name(id):
+    def get_lista(id):
         response = list(Bevasarlolista.objects.filter(id=id))
-        return response[0].nev
+        return response[0]
 
     def create():
         id = uuid.uuid4().hex
