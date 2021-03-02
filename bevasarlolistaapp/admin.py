@@ -2,6 +2,6 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Elem
+from .models import Bevasarlolista
 
-admin.site.register(Elem) 
+admin.site.register(Bevasarlolista)

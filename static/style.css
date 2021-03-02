@@ -70,6 +70,8 @@ h1 {
     border-radius: 50px;
     float: right;
     text-align: right;
+    cursor: pointer;
+    transition: background-color .2s;
 }
 
 .grid {
@@ -84,8 +86,16 @@ h1 {
     background: #82ca9c;
 }
 
+.zold:hover {
+    background: #578668;
+}
+
 .piros {
     background: #f05555;
+}
+
+.piros:hover {
+    background: #af3c3c;
 }
 
 .content {
@@ -140,6 +150,10 @@ h3 {
     margin: 1em;
 }
 
+.margin1 {
+    margin: 1em 0;
+}
+
 p.db {
     font-size: .85em;
     float: right;
@@ -150,13 +164,34 @@ p.db {
 }
 
 .input {
-    width: 1.5em;
     height: 1.5em;
-    text-align: center;
     font-size: 1em;
     padding: .25em;
     margin: auto 0.5em;
+}
 
+.text {
+    width: 50%;
+    border: 0;
+    border-bottom: 2px solid gray;
+    outline: 0;
+    font-size: 1.1rem;
+    color: black;
+    padding: 7px 0;
+    overflow: scroll;
+    background: transparent;
+}
+
+.number {
+    width: 1.5em;
+    text-align: center;
+}
+
+.left {
+    float: left;
+}
+
+.right {
     float: right;
 }
 
@@ -164,6 +199,15 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+form {
+    display: none;
+    margin-top: 2em;
+    border-top: 1px solid #dadada;
+    border-bottom: 1px solid #dadada;
+
+    transition: display .2s;
 }
 
 .hozzaad {
@@ -175,4 +219,63 @@ input::-webkit-inner-spin-button {
     margin: 1em;
 
     justify-self: center;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-animation-name: fadeIn;
+    -webkit-animation-duration: 0.4s;
+    animation-name: fadeIn;
+    animation-duration: 0.4s
+}
+
+.modal-content {
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+    background-color: rgb(175, 162, 162);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 30%;
+    border-radius: 5px;
+
+    -webkit-animation-name: slideIn;
+    -webkit-animation-duration: 0.4s;
+    animation-name: slideIn;
+    animation-duration: 0.4s
+}
+
+.modal-body {
+    padding: 2px 16px;
+}
+
+@-webkit-keyframes slideIn {
+    from {
+        bottom: -300px;
+        opacity: 0
+    }
+
+    to {
+        bottom: 1em;
+        right: 1em;
+        opacity: 1,
+    }
+}
+
+@keyframes slideIn {
+    from {
+        bottom: -300px;
+        opacity: 0
+    }
+
+    to {
+        bottom: 1em;
+        right: 1em;
+        opacity: 1
+    }
 }

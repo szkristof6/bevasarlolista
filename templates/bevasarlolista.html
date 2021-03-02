@@ -17,38 +17,61 @@
         <div class="header">
             <h1>Bevásárlólista</h1>
             <div class="info">
-                <span class="lista_nev">Teszt bevásárlólista</span>
+                <span class="lista_nev">{{ uuid }} bevásárlólista</span>
                 <div class="gomb piros grid" id="delete">Törlés</div>
             </div>
         </div>
         <div class="content">
-            <div class="elem">
+            <div class="elem targy">
                 <div class="bal">
                     <p class="id">#1</p>
                     <h3>Tej</h3>
                 </div>
-                <div class="jobb">
+                <div class="jobb margin1">
                     <div class="gomb piros elem_btn" id="torles">X</div>
                     <div class="gomb zold elem_btn" id="frissit">Frissítés</div>
                     <p class="db"> db</p>
-                    <input type="number" name="db" onkeydown="return event.keyCode !== 69" class="input" value="3" />
+                    <input type="number" name="db" onkeydown="return event.keyCode !== 69" class="input number right"
+                        value="3" />
                 </div>
             </div>
-            <div class="elem">
+            <div class="elem targy">
                 <div class="bal">
                     <p class="id">#2</p>
                     <h3>Sajt</h3>
                 </div>
-                <div class="jobb">
+                <div class="jobb margin1">
                     <div class="gomb piros elem_btn" id="torles">X</div>
                     <div class="gomb zold elem_btn" id="frissit">Frissítés</div>
                     <p class="db"> db</p>
-                    <input type="number" name="db" onkeydown="return event.keyCode !== 69" class="input" value="3" />
+                    <input type="number" name="db" onkeydown="return event.keyCode !== 69" class="input number right"
+                        value="4" />
                 </div>
             </div>
+            <form method="POST">
+                {% csrf_token %} 
+                <div class="elem">
+                    <div class="bal margin1">
+                        <input type="text" name="nev" class="input text left" placeholder="Elnevezés" />
+                    </div>
+                    <div class="jobb margin1">
+                        <div class="gomb zold elem_btn" id="submit">✓</div>
+                        <p class="db"> db</p>
+                        <input type="number" name="db" onkeydown="return event.keyCode !== 69"
+                            class="input number right" value="1" />
+                    </div>
+                </div>
+            </form>
         </div>
         <div class="hozzaad">
             <div class="gomb zold" id="add">Hozzáad</div>
+        </div>
+    </div>
+    <div id="massage" class="modal">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p />
+            </div>
         </div>
     </div>
 </body>
