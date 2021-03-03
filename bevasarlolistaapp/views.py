@@ -81,8 +81,17 @@ def delete(request, *args, **kwargs):
 
         return JsonResponse(data)
 
+def rename(request, *args, **kwargs):
+    array = json.load(request)
+
+    if(Bevasarlolista.atnevez_bevasarlolista(array)):
+        data = {
+            'response': 'Ok',
+        }
+
+        return JsonResponse(data)
 
 def index_view(request, *args, **kwargs):
-    return render(request, "index.html")
+    return render(request, "index.html", {"response": Bevasarlolista.get_all() })
 
 # Create your views here.

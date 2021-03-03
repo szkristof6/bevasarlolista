@@ -15,11 +15,17 @@
 <body>
     <div class="app">
         <div class="header">
-            <h1>Bevásárlólista</h1>
+            <h1><a href="/">Bevásárlólista</a></h1>
             <div class="info">
                 {% csrf_token %}
-                <span class="lista_nev">{{ nev }} bevásárlólista</span>
-                <div class="gomb piros grid" id="delete">Törlés</div>
+                <div class="bal">
+                    <span class="lista_nev"><span id="lista_nev">{{ nev }}</span> <input type="text" name="nev"
+                            class="input text elnevezes" value="{{ nev }}" /></span>
+                </div>
+                <div class="jobb">
+                    <div class="gomb piros grid" id="delete">Törlés</div>
+                    <div class="gomb zold grid-l" id="rename">Átnevezés</div>
+                </div>
             </div>
         </div>
         <div class="content">
@@ -62,6 +68,17 @@
         <div class="modal-content">
             <div class="modal-body">
                 <p />
+            </div>
+        </div>
+    </div>
+    <div id="alert" class="modal">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>A következő műveletet szeretnéd végrehajtani:<br />
+                    <span class='muvelet'></span><br />
+                    <span id="bool"></span> Biztosan folytatni szeretnéd?</p>
+                <div class="gomb zold" id="megerosit">Igen</div>
+                <div class="gomb piros" id="megsem">Mégsem</div>
             </div>
         </div>
     </div>

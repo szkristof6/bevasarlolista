@@ -17,13 +17,6 @@ class Bevasarlolista(models.Model):
     def __str__(self):
         return f"{self.nev}"
 
-    def is_uuid(id):
-        try:
-            UUID(id, version=4)
-            return True
-        except ValueError:
-            return False
-
     def protection(id):
         try:
             UUID(id, version=4)
@@ -31,6 +24,14 @@ class Bevasarlolista(models.Model):
             return False
         response = Bevasarlolista.objects.filter(id=id)
         if response.count() > 0:
+            return True
+
+    def atnevez_bevasarlolista(json):
+        query = Bevasarlolista.objects.filter(id=json['id'])
+        if not list(query)[0]:
+            return False
+        else:
+            query.update(nev=json['nev'])
             return True
 
     def torol_bevasarlolista(json):
@@ -88,6 +89,18 @@ class Bevasarlolista(models.Model):
     def get_lista(id):
         response = list(Bevasarlolista.objects.filter(id=id))
         return response[0]
+
+    def get_all():
+        array = []
+        response = Bevasarlolista.objects.all()
+        for elem in response:
+            array.append({
+                "id": elem.id.hex,
+                "nev": elem.nev,
+                "tetel": len(elem.tetel),
+                "date": elem.date
+            })
+        return array
 
     def create():
         id = uuid.uuid4().hex

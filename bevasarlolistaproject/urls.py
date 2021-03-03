@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 
-from bevasarlolistaapp.views import home_view, index_view, bevasarlolista_view, add, frissit, torles, delete, create
+from bevasarlolistaapp.views import home_view, index_view, bevasarlolista_view, add, frissit, torles, delete, create, rename
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +26,6 @@ urlpatterns = [
     path('frissit/', frissit),
     path('torles/', torles),
     path('delete/', delete),
+    path('rename/', rename),
     path('', index_view)
 ]

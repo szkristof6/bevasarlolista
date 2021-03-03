@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,14 +11,26 @@
 
     <link rel="stylesheet" href="{% static 'style.css'%} ">
 </head>
+
 <body>
     <div class="app">
         <div class="header">
-            <h1>Bevásárlólista</h1>
+            <h1><a href="/">Bevásárlólista</a></h1>
             <div class="info">
                 {% csrf_token %}
-                <span class="lista_nev">Főoldal</span>
+                <span class="lista_nev">Kezdés</span>
                 <div class="gomb zold grid" id="create">Létrehozás</div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="container">
+                {% for tetel in response %}
+                    <div class="card">
+                        <span class="title"><a href="/bevasarlolista/{{tetel.id}}/">{{tetel.nev}}</a></span>
+                        <span class="osszeg">{{tetel.tetel}} db</span>
+                        <span class="date">{{tetel.date}}</span>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -30,4 +43,5 @@
     </div>
 </body>
 <script src="{% static 'index.js'%} "></script>
+
 </html>

@@ -55,7 +55,8 @@ h1 {
 
 .lista_nev {
     font-size: 2em;
-    justify-self: start;
+    margin: 0 .5em;
+    justify-self: normal;
     font-family: 'Droid Serif', serif;
 }
 
@@ -69,13 +70,18 @@ h1 {
     font-weight: bold;
     border-radius: 50px;
     float: right;
-    text-align: right;
+    text-align: center;
     cursor: pointer;
     transition: background-color .2s;
 }
 
 .grid {
     justify-self: end;
+    margin: 0 1em;
+}
+
+#rename{
+    display: none;
 }
 
 .elem_btn {
@@ -146,8 +152,6 @@ h3 {
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 2;
-
-    margin: 1em;
 }
 
 .margin1 {
@@ -180,6 +184,15 @@ p.db {
     padding: 7px 0;
     overflow: scroll;
     background: transparent;
+}
+
+.elnevezes {
+    display: none;
+    font-size: 1em;
+    font-family: inherit;
+    justify-self: self-start;
+    padding: 0 !important;
+    float: left;
 }
 
 .number {
@@ -221,19 +234,7 @@ form {
     justify-self: center;
 }
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    -webkit-animation-name: fadeIn;
-    -webkit-animation-duration: 0.4s;
-    animation-name: fadeIn;
-    animation-duration: 0.4s
-}
-
-.modal-content {
+#massage>.modal-content {
     position: fixed;
     bottom: 1em;
     right: 1em;
@@ -248,8 +249,86 @@ form {
     animation-duration: 0.4s
 }
 
-.modal-body {
+#massage>.modal-body {
     padding: 2px 16px;
+}
+
+#massage>.modal-content>.modal-body>p {
+    margin: 1em
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    -webkit-animation-name: fadeIn;
+    -webkit-animation-duration: 0.4s;
+    animation-name: fadeIn;
+    animation-duration: 0.4s
+}
+
+#alert {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding-top: 100px;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+#alert>.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 5px;
+    width: 60%;
+}
+
+#alert>.modal-content>.modal-body {
+    display: grid;
+
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "title title"
+        "megerosit megsem";
+    text-align: center;
+}
+
+#alert>.modal-content>.modal-body>p {
+    grid-area: title;
+    font-size: 1.2em;
+    margin: 1em 1em 3em 1em;
+
+}
+
+.muvelet {
+    display: block;
+    font-weight: bold;
+    font-size: 1.3em;
+    margin: .5em 0;
+}
+
+.red {
+    color: red;
+    font-weight: bold;
+}
+
+#alert>.modal-content>.modal-body>#megerosit {
+    grid-area: megerosit;
+    margin: 0 1em;
+    font-size: .9em;
+    width: 80%;
+}
+
+#alert>.modal-content>.modal-body>#megsem {
+    grid-area: megsem;
+    margin: 0 1em;
+    font-size: .9em;
+    width: 80%;
 }
 
 @-webkit-keyframes slideIn {
@@ -276,4 +355,49 @@ form {
         right: 1em;
         opacity: 1
     }
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
+    grid-gap: 2em;
+    margin: 1em;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "title title"
+        "osszeg date";
+
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card>.title {
+    grid-area: title;
+    font-size: 2.3em;
+    margin: .7em auto 2em .7em;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.card>.osszeg {
+    grid-area: osszeg;
+    font-size: 1em;
+    text-align: left;
+    margin: .7em .7em;
+}
+
+.card>.date {
+    grid-area: date;
+    font-size: 1em;
+    text-align: right;
+    margin: .7em .7em;
 }

@@ -6,7 +6,7 @@ window.onclick = function (event) {
     }
 }
 
-function modal_show(massage){
+function modal_show(massage) {
     modal.querySelector('p').innerHTML = massage;
     modal.style.display = "block";
 
@@ -18,17 +18,17 @@ function modal_show(massage){
 const create_btn = document.querySelector('#create');
 create_btn.addEventListener("click", (event) => {
     fetch("/create/", {
-        method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest',
-            'X-CSRFToken': document.querySelector('.info').querySelector('input[name="csrfmiddlewaretoken"]').value
-        },
-        credentials: 'same-origin'
-    }).then(response => response.json())
-    .then(({
-        response
-    }) => {
-        window.location.href = "/bevasarlolista/"+response+"/";
-    })
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRFToken': document.querySelector('.info').querySelector('input[name="csrfmiddlewaretoken"]').value
+            },
+            credentials: 'same-origin'
+        }).then(response => response.json())
+        .then(({
+            response
+        }) => {
+            window.location.href = "/bevasarlolista/" + response + "/";
+        })
 });
