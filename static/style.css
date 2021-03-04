@@ -55,9 +55,12 @@ h1 {
 
 .lista_nev {
     font-size: 2em;
-    margin: 0 .5em;
     justify-self: normal;
     font-family: 'Droid Serif', serif;
+}
+
+#lista_nev {
+    margin: auto 0.5em;
 }
 
 .gomb {
@@ -80,7 +83,7 @@ h1 {
     margin: 0 1em;
 }
 
-#rename{
+#rename {
     display: none;
 }
 
@@ -96,12 +99,20 @@ h1 {
     background: #578668;
 }
 
+.modal-content>.zold {
+    color: #82ca9c;
+}
+
 .piros {
     background: #f05555;
 }
 
 .piros:hover {
     background: #af3c3c;
+}
+
+.modal-content>.piros {
+    color: #82ca9c;
 }
 
 .content {
@@ -172,6 +183,7 @@ p.db {
     font-size: 1em;
     padding: .25em;
     margin: auto 0.5em;
+    font-family: inherit;
 }
 
 .text {
@@ -238,7 +250,7 @@ form {
     position: fixed;
     bottom: 1em;
     right: 1em;
-    background-color: rgb(175, 162, 162);
+    color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     width: 30%;
     border-radius: 5px;
@@ -254,7 +266,8 @@ form {
 }
 
 #massage>.modal-content>.modal-body>p {
-    margin: 1em
+    margin: 1em;
+    font-size: 1em;
 }
 
 .modal {

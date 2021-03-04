@@ -2,11 +2,13 @@ from django.db import models
 import uuid
 from uuid import UUID
 import datetime
+from datetime import datetime
 
 
 class Bevasarlolista(models.Model):
     id = models.UUIDField(primary_key=True, editable=False, unique=True)
-    nev = models.CharField(max_length=30, default="Névtelen")
+    nev = models.CharField(
+        max_length=30, default=datetime.now().strftime("%Y.%m.%d"))
     tetel = models.JSONField(encoder=None)
     date = models.DateField()
 
@@ -29,40 +31,56 @@ class Bevasarlolista(models.Model):
     def atnevez_bevasarlolista(json):
         query = Bevasarlolista.objects.filter(id=json['id'])
         if not list(query)[0]:
-            return False
+            return 'nem talált bevasarlolista'
         else:
-            query.update(nev=json['nev'])
-            return True
+            if(list(query)[0].nev != json['nev']):
+                try:
+                    query.update(nev=json['nev'])
+                    return True
+                except ValueError:
+                    return ValueError
+            else:
+                return 'azonos érték'
 
     def torol_bevasarlolista(json):
         query = Bevasarlolista.objects.filter(id=json['id'])
         if not list(query)[0]:
-            return False
+            return 'nem talált bevasarlolista'
         else:
-            query.delete()
-            return True
+            try:
+                query.delete()
+                return True
+            except ValueError:
+                return ValueError
 
     def frissit_tetel(json):
         query = Bevasarlolista.objects.filter(id=json['id'])
         if not list(query)[0].tetel:
-            return False
+            return 'nem talált tétel'
         else:
             new_list = list(query)[0].tetel
-            new_list[json['tetel_id']]['db'] = json['db']
-            query.update(tetel=new_list)
-
-            return True
+            if(new_list[json['tetel_id']]['db'] != int(json['db'])):
+                new_list[json['tetel_id']]['db'] = int(json['db'])
+                try:
+                    query.update(tetel=new_list)
+                    return True
+                except ValueError:
+                    return ValueError
+            else:
+                return 'azonos érték'
 
     def torol_tetel(json):
         query = Bevasarlolista.objects.filter(id=json['id'])
         if not list(query)[0].tetel:
-            return False
+            return 'nem talált tétel'
         else:
             new_list = list(query)[0].tetel
-            del new_list[json['tetel_id']]
-            query.update(tetel=new_list)
-
-            return True
+            del new_list[json['tetel_id']-1]
+            try:
+                query.update(tetel=new_list)
+                return True
+            except ValueError:
+                return ValueError
 
     def add_tetel(json):
         query = Bevasarlolista.objects.filter(id=json['id'])
@@ -70,21 +88,27 @@ class Bevasarlolista(models.Model):
             lista = [{
                 'id': 1,
                 'nev': json['nev'],
-                'db': json['db']
+                'db': int(json['db'])
             }]
             query.update(tetel=lista)
 
             return True
         else:
             eddigi = list(query)[0].tetel
-            eddigi.append({
-                'id': eddigi[len(eddigi)-1]['id']+1,
-                'nev': json['nev'],
-                'db': json['db']
-            })
-            query.update(tetel=eddigi)
-
-            return True
+            for adat in eddigi:
+                if(json['nev'] != adat['nev']):
+                    eddigi.append({
+                        'id': int(eddigi[len(eddigi)-1]['id']+1),
+                        'nev': json['nev'],
+                        'db': int(json['db'])
+                    })
+                    try:
+                        query.update(tetel=eddigi)
+                        return True
+                    except ValueError:
+                        return ValueError
+                else:
+                    return 'azonos név'
 
     def get_lista(id):
         response = list(Bevasarlolista.objects.filter(id=id))
@@ -104,23 +128,10 @@ class Bevasarlolista(models.Model):
 
     def create():
         id = uuid.uuid4().hex
-        Bevasarlolista(id=id, tetel=[], date=datetime.datetime.now()).save()
-
-        return id
-
-
-class Elem(models.Model):
-
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    targy = models.CharField(max_length=128)
-    db = models.IntegerField()
-
-    class Meta:
-        verbose_name = 'Elem'
-        verbose_name_plural = 'Elemek'
-
-    def __str__(self):
-        return f"{self.targy} {self.db}"
-
+        try:
+            Bevasarlolista(id=id, tetel=[], date=datetime.now()).save()
+            return {'response': True, 'massage': id}
+        except ValueError:
+            return {'response': ValueError, 'massage': ValueError}
 
 # Create your models here.
