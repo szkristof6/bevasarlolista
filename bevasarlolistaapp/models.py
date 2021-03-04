@@ -15,6 +15,7 @@ class Bevasarlolista(models.Model):
     class Meta:
         verbose_name = 'Bevásárlólista'
         verbose_name_plural = 'Bevásárlólisták'
+        ordering = ['-date']
 
     def __str__(self):
         return f"{self.nev}"
@@ -122,7 +123,7 @@ class Bevasarlolista(models.Model):
                 "id": elem.id.hex,
                 "nev": elem.nev,
                 "tetel": len(elem.tetel),
-                "date": elem.date
+                "date": str(elem.date)
             })
         return array
 

@@ -3,11 +3,12 @@ const modal = document.querySelector("#massage");
 const success = "zold";
 const hiba = "piros";
 
-window.onclick = function (event) {
+window.onclick = (event) => {
     if (event.target == modal) {
         modal.style.display = "none";
     }
 }
+
 
 function modal_show(massage, state) {
     modal.querySelector('p').innerText = massage;

@@ -186,6 +186,6 @@ def rename(request, *args, **kwargs):
 
 
 def index_view(request, *args, **kwargs):
-    return render(request, "index.html", {"response": Bevasarlolista.get_all()})
+    return render(request, "index.html", {"response": reversed(Bevasarlolista.get_all())})
 
 # Create your views here.

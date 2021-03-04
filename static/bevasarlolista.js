@@ -304,8 +304,8 @@ submit_btn.addEventListener("click", (event) => {
 					modal_show(massage, hiba)
 				}
 			})
+			console.log(json);
 	} else {
 		modal_show("Az adatok nincsenek megadva!", hiba)
 	}
-	console.log(json);
 });
